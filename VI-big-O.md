@@ -113,3 +113,7 @@ int sqrt(int n) {
 
 guess \* guess = n is saying that guess goes up to the square root of n.
 Therefore this is O(sqrt(n)).
+
+#### VI.7 If a binary search tree is not balanced, how long might it take (worst case) to find an element in it?
+
+O(N). We might have only one branch and have to find the leaf deep down and visit each node once.
