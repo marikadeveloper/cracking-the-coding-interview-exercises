@@ -93,12 +93,23 @@ int sqrt_helper(int n, int min, int max) {
 // 100, 8, 11 guess = 9
 // 100, 10, 11 guess = 10
 
-// n = 40 (6)
-// 40, 1, 40 guess = 20
-// 40, 1, 19 guess = 10
-// 40, 1, 9 guess = 5
-// 40, 6, 9 guess = 7
-// 40, 6, 6 guess = 6
-
 The recursion happens log(n) times. So O(log n).
 Note from the book solution: this is binary search.
+
+### VI.6 The following code computes the integer square root of a number. If the number is not a perfect square then it returns -1. It does this by trying increasingly large numbers until it finds the right value (or is too high). What is its runtime?
+
+```c
+int sqrt(int n) {
+  for (int guess = 1; guess * guess <= n; guess++) {
+    if (guess * guess == n) {
+      return guess;
+    }
+  }
+  return -1;
+}
+```
+
+#### Solution
+
+guess \* guess = n is saying that guess goes up to the square root of n.
+Therefore this is O(sqrt(n)).
