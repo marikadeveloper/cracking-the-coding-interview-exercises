@@ -41,3 +41,22 @@ int mod(int a, int b) {
 #### Solution
 
 O(1) since we're doing constant work, no loops no recursive calls.
+
+### VI.4 The following code performs integer division. What is its runtime (assuming a and b are positive)?
+
+```c
+int div(int a, int b) {
+  int count = 0;
+  int sum = b;
+  while (sum <= a) {
+    sum += b;
+    count++;
+  }
+  return count;
+}
+```
+
+#### Solution
+
+O( a/b ), for example if we do 10/2, the while loop will go on 5 times.
+If we do 9/3 it will run 3 times instead.
