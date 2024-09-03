@@ -117,3 +117,7 @@ Therefore this is O(sqrt(n)).
 #### VI.7 If a binary search tree is not balanced, how long might it take (worst case) to find an element in it?
 
 O(N). We might have only one branch and have to find the leaf deep down and visit each node once.
+
+#### VI.8 You are looking for a specific value in a binary tree, but the tree is not a binary search tree. What is the time complexity of this?
+
+O(N) we might be in the situation of a tree having only one branch. Without any order anyways we might have to visit every node before finding the right one. Like having a library catalogue not in alphabetical order.
