@@ -146,6 +146,34 @@ int[] appendToNew(int[] array, int value) {
 }
 ```
 
-### Solution
+#### Solution
 
 We are creating a new array of size value+1 for each value of the input array. This is O(N^2).
+
+### VI.10 The following code sums the digits in a number. What is its big O time?
+
+```c++
+int sumDigits(int n) {
+  int sum = 0;
+  while (n > 0) {
+    sum += n % 10;
+    n /= 10;
+  }
+  return sum;
+}
+```
+
+#### Solution
+
+If sum = 111, we have:
+
+- while 111 > 0 -> sum = 1; n = 11
+- while 11 > 0 -> sum = 2; n = 1
+- while 1 > 0 -> sum = 3; n = 0
+
+So the runtime is O(N) where N is the length of the number.
+!!! this is not correct !!!
+
+While the runtime will be the number of digits in the number, we have to consider
+that a number with d digits can have a value up to 10^d. If n = 10^d, then d = log n.
+Therefore the runtime is **O(log n)**.
