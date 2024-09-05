@@ -181,7 +181,7 @@ Therefore the runtime is **O(log n)**.
 ### VI.11 The following code prints all strings of length k where the characters are in sorted order. It does this by generating all strings of length k and then checking if each is sorted. What is its runtime?
 
 ```java
-void printSortedStrings(int remaining) { // remaining = 2
+void printSortedStrings(int remaining) {
   printSortedStrings(remaining, "");
 }
 
@@ -197,7 +197,7 @@ void printSortedStrings(int remaining, String prefix) {
   }
 }
 
-boolean isInOrder(String s) { // O(s.length)
+boolean isInOrder(String s) {
   for (int i = 1; i < s.length(); i++) {
     int prev = s.charAt(i - 1);
     int curr = s.charAt(i);
