@@ -114,10 +114,38 @@ int sqrt(int n) {
 guess \* guess = n is saying that guess goes up to the square root of n.
 Therefore this is O(sqrt(n)).
 
-#### VI.7 If a binary search tree is not balanced, how long might it take (worst case) to find an element in it?
+### VI.7 If a binary search tree is not balanced, how long might it take (worst case) to find an element in it?
 
 O(N). We might have only one branch and have to find the leaf deep down and visit each node once.
 
-#### VI.8 You are looking for a specific value in a binary tree, but the tree is not a binary search tree. What is the time complexity of this?
+### VI.8 You are looking for a specific value in a binary tree, but the tree is not a binary search tree. What is the time complexity of this?
 
 O(N) we might be in the situation of a tree having only one branch. Without any order anyways we might have to visit every node before finding the right one. Like having a library catalogue not in alphabetical order.
+
+### VI.9 The appendToNew method appends a value to an array by creating a new, longer array and returning this longer array. You've used the appendToNew method to create a copyArray function that repeatedly calls appendToNew. How long does copying an array take?
+
+```c++
+int[] copyArray(int[] array) {
+  int[] copy = new int[0];
+  for (int value : array) {
+    copy = appendToNew(copy, value);
+  }
+  return copy;
+}
+
+int[] appendToNew(int[] array, int value) {
+  // copy all elements over to new array
+  int[] bigger = new int[array.length + 1];
+  for (int i = 0; i < array.length; i++) {
+    bigger[i] = array[i];
+  }
+
+  // add new element
+  bigger[bigger.length - 1] = value;
+  return bigger;
+}
+```
+
+### Solution
+
+We are creating a new array of size value+1 for each value of the input array. This is O(N^2).
