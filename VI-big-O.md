@@ -225,3 +225,27 @@ The output should be, for remaining = 2,
 ??? It takes O(kc^k) time. Where k = length of the string, c = num of characters in the alphabet.
 ??? It takes O(c^k) time to generate each string.
 Then checking if each string is sorted takes O(k) time.
+
+### VI.12 The following code computes the intersection (the number of elements in common) of two arrays. It assumes that neither array has duplicates. It computes the intersection by sorting one array (array b) and then iterating through array a checking (via binary search) if each value is in b. What is its runtime?
+
+```java
+int intersection(int[] a, int[] b) {
+  mergesort(b); // O (b log b)
+  int intersect = 0;
+
+  for (int x : a) { // O (a)
+    if (binarySearch(b, x) >= 0) { // binary search is O(log b)
+      intersect++;
+    }
+  }
+  return intersect;
+}
+```
+
+#### Solution
+
+O(b log b + a log b)
+
+- sort array b -> O(b log b)
+- for each element in a, we do binary search in O(log b)
+- by multiplying this last part, we get O(a log b)
