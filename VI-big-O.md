@@ -177,3 +177,51 @@ So the runtime is O(N) where N is the length of the number.
 While the runtime will be the number of digits in the number, we have to consider
 that a number with d digits can have a value up to 10^d. If n = 10^d, then d = log n.
 Therefore the runtime is **O(log n)**.
+
+### VI.11 The following code prints all strings of length k where the characters are in sorted order. It does this by generating all strings of length k and then checking if each is sorted. What is its runtime?
+
+```java
+void printSortedStrings(int remaining) { // remaining = 2
+  printSortedStrings(remaining, "");
+}
+
+void printSortedStrings(int remaining, String prefix) {
+  if (remaining == 0) {
+    if (isInOrder(prefix)) {
+      System.out.println(prefix);
+    }
+  } else {
+    for (char c = 'a'; c <= 'z'; c++) {
+      printSortedStrings(remaining - 1, prefix + c);
+    }
+  }
+}
+
+boolean isInOrder(String s) { // O(s.length)
+  for (int i = 1; i < s.length(); i++) {
+    int prev = s.charAt(i - 1);
+    int curr = s.charAt(i);
+    if (prev > curr) {
+      return false;
+    }
+  }
+  return true;
+}
+```
+
+#### Solution
+
+The output should be, for remaining = 2,
+'aa'
+'ab'
+'ac'
+'ad'
+'ae'
+'af'
+'ag'
+...
+'zz'
+
+??? It takes O(kc^k) time. Where k = length of the string, c = num of characters in the alphabet.
+??? It takes O(c^k) time to generate each string.
+Then checking if each string is sorted takes O(k) time.
